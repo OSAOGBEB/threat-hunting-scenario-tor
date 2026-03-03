@@ -105,7 +105,7 @@ DeviceNetworkEvents
 
 
 ---
-Chronological Events
+## Chronological Events
 Below is your activity rewritten in a formal SOC Incident Report format, strictly scoped to Tor Browser–related findings.
 
 Security Operations Center (SOC) Incident Report
@@ -116,12 +116,12 @@ Report Date: February 25, 2026
 Severity: Medium (Policy Violation / Potential Defense Evasion)
 Status: Investigation Completed – Awaiting Response Decision
 
-1. Executive Summary
+## Executive Summary
 On February 24, 2026, the user bishopxpress on device bishxvm downloaded, executed, and actively used the portable version of Tor Browser (v15.0.7).
 Within seconds of execution, the Tor environment was extracted to the desktop, multiple Tor-related processes were launched, and outbound network connections were established over known Tor relay ports (including port 9001) and HTTPS (443).
 The activity demonstrates successful deployment and active use of anonymized internet routing software.
 
-2. Affected Asset Information
+## Affected Asset Information
 Field
 Value
 Device Name
@@ -136,7 +136,7 @@ SHA256
 958626901dbe17fc003ed671b61b3656375e6f0bc06c9dff60bd2f80d4ace21b
 
 
-3. Timeline of Events (Chronological)
+## Timeline of Events (Chronological)
 21:19:27.4056348Z
 Event Type: Process Creation
 Details:
@@ -144,7 +144,7 @@ User executed:
 C:\Users\BishopXpress\Downloads\tor-browser-windows-x86_64-portable-15.0.7.exe
 
 
-This marks the initial execution of the Tor portable installer.
+## This marks the initial execution of the Tor portable installer.
 
 21:19:58.8788558Z
 Event Type: Process Creation
@@ -184,12 +184,12 @@ https://www.dcuirywzxdbn2omkemxbfpr.com
 Action
 ConnectionSuccess
 
-Additional outbound connections were observed over port 443 initiated by:
+## Additional outbound connections were observed over port 443 initiated by:
 tor.exe
 firefox.exe
 Port 9001 is commonly associated with Tor relay traffic.
 
-4. Detection Methodology
+## Detection Methodology
 The following telemetry sources were reviewed:
 DeviceProcessEvents – To identify execution of Tor installer and Tor-related processes
 DeviceFileEvents – To identify Tor-related file extraction and file creation
@@ -200,7 +200,7 @@ Known Tor executable names (tor.exe, firefox.exe under Tor path)
 Known Tor ports (9001, 9030, 9040, 9050, 9051, 9150)
 HTTPS traffic initiated by Tor processes
 
-5. Analysis
+## Analysis
 Findings confirm:
 Tor portable installer was executed.
 Tor environment was extracted to the desktop.
@@ -218,7 +218,7 @@ Network visibility reduction
 Potential defense evasion
 Policy compliance concerns
 
-6. MITRE ATT&CK Mapping
+## MITRE ATT&CK Mapping
 Technique
 Description
 T1090
@@ -229,7 +229,7 @@ T1204.002
 User Execution (User initiated executable)
 
 
-7. Risk Assessment
+## Risk Assessment
 Risk Level: Medium
 While Tor usage alone is not inherently malicious, it presents:
 Reduced network visibility
@@ -237,7 +237,7 @@ Potential data exfiltration channel
 Bypass of enterprise monitoring controls
 Violation of acceptable use policies (if applicable)
 
-8. Recommended Actions
+## Recommended Actions
 Confirm whether Tor usage is authorized under company policy.
 Interview the user to determine the business justification.
 Review browser activity and file access during the Tor session.
@@ -245,15 +245,12 @@ Consider blocking Tor traffic at the firewall or proxy level if prohibited.
 Implement alerting for future Tor process execution.
 
 
-
-
-
-Summary
+## Summary
 On February 24, 2026, user bishopxpress successfully installed and actively used Tor Browser on device bishxvm.
 The activity included executable launch, file extraction, Tor process execution, and outbound network communications over Tor-associated ports and HTTPS.
 No additional malicious behavior was identified within the scope of this investigation.
 
 
-Response Taken
+## Response Taken
 TOR usage was confirmed on endpoint bishxvm. The device was isolated and the user's direct manager was notified.
 
